@@ -1,0 +1,242 @@
+"Day1": [
+        ["resume", "이력서"],
+        ["opening", "공석"],
+        ["applicant", "지원자"],
+        ["requirement", "필요조건"],
+        ["meet", "만족시키다"],
+        ["qualified", "자격있는"],
+        ["candidate", "후보자"],
+        ["confidence", "확신"],
+        ["highly", "매우"],
+        ["professional", "전문적인"],
+        ["interview", "면접"],
+        ["hire", "고용하다"],
+        ["training", "교육"],
+        ["reference", "추천서"],
+        ["position", "일자리"],
+        ["achievement", "성취"],
+        ["impressed", "인상 깊게 생각하는"],
+        ["excellent", "훌륭한"],
+        ["eligible", "자격이 있는"],
+        ["identify", "알아보다"],
+        ["associate", "관련시키다"],
+        ["condition", "조건"],
+        ["employment", "고용"],
+        ["lack", "~이 없다"],
+        ["managerial", "관리의"],
+        ["diligent", "성실한"],
+        ["familiar", "익숙한"],
+        ["proficiency", "숙달"],
+        ["prospective", "장래의"],
+        ["appeal", "관심을 끌다"],
+        ["specialize", "~을 전공하다"],
+        ["apprehensive", "걱정하는"],
+        ["consultant", "고문"],
+        ["entitle", "자격을 주다"],
+        ["degree", "학위"],
+        ["payroll", "임금대장"],
+        ["recruit", "모집하다"],
+        ["certification", "증명서"],
+        ["occupation", "직업"],
+        ["wage", "급료"],
+    ],
+
+    --------------------
+    function loadList() {
+    let loadDay = localStorage.getItem('day');
+
+    //시험볼 영어 list
+    let dayList = wordLists[loadDay];
+
+    let jsonString = JSON.stringify(dayList);
+    //뜻 보이게 하는 list
+    let dayList2 = JSON.parse(jsonString);
+
+    if (dayList.length === 0) {
+        location.href = "end.html";
+        return;
+    }
+
+    return {
+        dayList,
+        dayList2,
+    };
+}
+
+//전역변수선언(qword, answerword1,2,3,4)
+let correctAnswer;
+
+function showWord(dayList, dayList2) {
+    const randomIndex = Math.floor(Math.random() * dayList.length);
+
+    console.log(dayList);
+    console.log(dayList2);
+
+    let selectWord1 = dayList[randomIndex];
+
+    dayList.splice(randomIndex, 1);
+
+    let selectWord2, selectWord3, selectWord4;
+    selectWord2 = dayList2[Math.floor(Math.random() * dayList2.length)];
+    selectWord3 = dayList2[Math.floor(Math.random() * dayList2.length)];
+    selectWord4 = dayList2[Math.floor(Math.random() * dayList2.length)];
+
+    //question
+    document.querySelector('.qWord').innerText = selectWord1[0];
+
+    //answersheet
+    correctAnswer = selectWord1[1];
+    let wrongAnswer1 = selectWord2[1];
+    let wrongAnswer2 = selectWord3[1];
+    let wrongAnswer3 = selectWord4[1];
+
+    let answerarr = [correctAnswer, wrongAnswer1, wrongAnswer2, wrongAnswer3];
+
+    answerarr.sort(() => Math.random() - 0.5);
+
+    document.querySelector('.answer1').innerText = answerarr[0];
+    document.querySelector('.answer2').innerText = answerarr[1];
+    document.querySelector('.answer3').innerText = answerarr[2];
+    document.querySelector('.answer4').innerText = answerarr[3];
+}
+
+function main() {
+    const {
+        dayList,
+        dayList2,
+    } = loadList();
+    showWord(dayList, dayList2)
+}
+
+function giveTestDay(day) {
+    //const day = document.querySelector(".day").innerText;
+    localStorage.setItem('day', day);
+
+    location.href = "explain.html";
+}
+
+// 모든 버튼에 클릭 이벤트 리스너 추가
+const dayButtons = document.getElementsByClassName('day');
+for (let button of dayButtons) {
+    button.addEventListener('click', function () {
+        const day = this.getAttribute('data-day'); // data-day 속성에서 값 가져오기
+        giveTestDay(day);
+    });
+
+    getTestDay()
+}
+
+function getTestDay() {
+    let getDay = localStorage.getItem('day');
+    document.querySelector(".testDay").innerText = getDay;
+    console.log(getDay)
+}
+
+window.onload = function () {
+    getTestDay();
+};
+
+-------------------------
+
+//오답 리스트
+let wrongAnswerArr = [];
+
+function compare(event) {
+    let selectedAnswer = event.target.innerText;
+
+    if (selectedAnswer === correctAnswer) {
+        document.querySelector('.qWord').style.backgroundColor = "#3EC5FF";
+    } else {
+        document.querySelector('.qWord').style.backgroundColor = "#FF3E3E";
+        wrongAnswerArr.push(selectWord1);
+    }
+    console.log(wrongAnswerArr)
+    setTimeout(() => {
+        resetButtonColor();
+        main();
+    }, 1000);
+}
+
+function wrongCount() {
+    let wrongCount = localStorage.getItem('wrongAnswerCount');
+    document.querySelector('.wrongcount').innerText = wrongCount;
+    console.log(wrongAnswerArr)
+}
+// Add event listeners to the answer buttons
+document.querySelectorAll('#ans').forEach(button => {
+    button.addEventListener('click', compare);
+});
+
+function showwrongList() {
+    let wrongCountList = JSON.parse(localStorage.getItem('wrongAnswerList'));
+    console.log(wrongCountList)
+
+    const listContainer = document.querySelector('.list_container');
+
+    listContainer.innerHTML = '';
+
+    let table;
+    let wordContainer;
+    let rowCount = 0;
+
+    function createTable() {
+        const tableWrapper = document.createElement('div');
+        tableWrapper.className = 'word_row';
+
+        table = document.createElement('table');
+        table.className = 'word_table';
+
+        const thead = document.createElement('thead');
+        const headerRow = document.createElement('tr');
+
+        const englishHeader = document.createElement('th');
+        englishHeader.innerText = '영어단어';
+
+        const koreanHeader = document.createElement('th');
+        koreanHeader.innerText = '한글 뜻';
+
+        headerRow.appendChild(englishHeader);
+        headerRow.appendChild(koreanHeader);
+        thead.append(headerRow);
+
+        wordContainer = document.createElement('tbody');
+        wordContainer.className = 'word_container';
+
+        table.appendChild(thead);
+        table.appendChild(wordContainer);
+
+        tableWrapper.appendChild(table);
+        listContainer.appendChild(tableWrapper);
+    }
+
+    createTable();
+
+    for (let i = 0; i < wrongCountList.length; i++) {
+        const wordPair = wrongCountList[i];
+
+        // Create a table row
+        const row = document.createElement('tr');
+
+        //영어
+        const englishWord = document.createElement('td');
+        englishWord.innerText = wordPair[0]; // English word
+        englishWord.className = 'english-word';
+
+        //뜻
+        const koreanWord = document.createElement('td');
+        koreanWord.innerText = wordPair[1]; // Korean word
+        koreanWord.className = 'korean-word';
+
+        row.appendChild(englishWord);
+        row.appendChild(koreanWord);
+
+        wordContainer.appendChild(row);
+
+        rowCount++;
+
+        if (rowCount === 6) {
+            createTable();
+            rowCount = 0;
+        }
+    }
+}

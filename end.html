@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+    <div class="explain_container">
+        <div class="expain_row">
+            <pre class="explain"><단어 테스트 종료></pre>
+        </div>
+        <div class="expain_row">
+            <pre class="explain2">틀린단어 갯수 : </pre>
+            <pre class="wrongcount"></pre>
+        </div>
+    </div>
+    <div class="ok_div">
+        <div class="ok_row">
+            <button class="ok3" onclick="location.href='wrongList.html'">틀린단어 확인하기</button>
+        </div>
+        <div class="ok_row">
+            <button class="ok2" onclick="location.href='index.html'">메인화면으로 가기</button>
+        </div>
+    </div>
+    <script src="word.js"></script>
+    <script src="wordList.js"></script>
+    <script src="wordList2.js"></script>
+    <script>
+        wrongCount()
+    </script>
+</body>
+
+</html>

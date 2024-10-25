@@ -1,0 +1,330 @@
+.title{
+    font-size: 100px;
+    color: #E0A100;
+    display: inline;
+}
+
+.title2{
+    margin-left: 30%;
+    font-size: 80px;
+    color: #E0A100;
+    display: inline;
+}
+
+.title3{
+    margin-left: 30%;
+    font-size: 40px;
+    color: #E0A100;
+    display: inline;
+}
+
+.select{
+    font-size: 80px;
+    color: #7C5200;
+}
+
+
+.button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.option1{
+    width: 600px;
+    height: 200px;
+    margin: 100px;
+    font-size: 100px;
+    background-color: transparent;
+    border-width: 5px;
+    border-color: #7C5200;
+    color: #7C5200;
+}
+
+.day_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.day_row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.day_colum{
+    position: absolute;
+    right: 0;
+}
+
+.day{
+    margin: 25px;
+    height: 100px;
+    font-size: 40px;
+    width: 150px;
+    background-color: transparent;
+    border-width: 5px;
+    border-color: #7C5200;
+    color: #7C5200;
+}
+
+.back{
+    width: 5%;
+}
+
+.select{
+    display: inline;
+}
+
+.testDay, .test{
+    font-size: 50px;
+    color: #E0A100;
+    display: inline;
+}
+
+.explain_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.explain_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.expain_row{
+    display: flex;
+    justify-content: center;
+}
+
+.explain{
+    font-size: 100px;
+    color: #E0A100;
+}
+.explain2{
+    font-size: 80px;
+    color: #ff7b00;
+}
+.wrongcount{
+    font-size: 80px;
+    color: #FF3E3E;
+}
+
+.ok_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5%;
+}
+
+.ok_row{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+.ok{
+    width: 600px;
+    height: 200px;
+    background-color: transparent;
+    font-size: 100px;
+    border-width: 5px;
+    border-color: #7C5200;
+    color: #7C5200;
+}
+
+.ok2{
+    width: 1000px;
+    height: 200px;
+    background-color: transparent;
+    font-size: 100px;
+    border-width: 5px;
+    border-color: #7C5200;
+    color: #7C5200;
+}
+
+.ok3{
+    width: 1000px;
+    height: 200px;
+    background-color: transparent;
+    font-size: 100px;
+    border-width: 5px;
+    border-color: #7C5200;
+    color: #FF3E3E;
+}
+
+.line{
+    margin-left: 10%;
+    width: 2000px;
+    height: 2px;
+    background-color: #7C5200;
+}
+
+.line2{
+    margin-left: 10%;
+    margin-top: 20px;
+    width: 2000px;
+    height: 2px;
+    background-color: #7C5200;
+}
+
+.count{
+    display: flex;
+    justify-content: right;
+    align-items: right  ;
+    flex-direction: row;
+    margin-right: 50px;
+}
+.qword_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.qWord{
+    width: 800px;
+    height: 300px;
+    background-color: transparent;
+    font-size: 100px;
+    border-width: 5px;
+    border-color: #7C5200;
+    color: #844700;
+}
+
+.aword_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.answer_row{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+.answer1, .answer2, .answer3, .answer4{
+    margin: 50px;
+    height: 200px;
+    width: 800px;
+    background-color: transparent;
+    font-size: 70px;
+    border-width: 5px;
+    border-color: #7C5200;
+    color: #844700;
+}
+
+.day:hover ,.option1:hover, .ok:hover, .ok2:hover{
+    background-color: #FFD873;
+}
+
+.ok3:hover{
+    background-color:#ff9393;
+}
+
+#ans:hover{
+    background-color: #FFD873
+}
+
+.current, .total, .slash{
+    margin-left: 10px;
+    font-size: 40px;
+}
+
+.english-word, .korean-word{
+    font-size: 30px;
+}
+
+.wrong_explain{
+    text-align: center;
+    font-size: 50px;
+    color:#7C5200;
+}
+
+.list_container {
+    display: flex;
+    flex-wrap:wrap; /* 테이블이 가로로 3개씩 배치되며 줄을 넘어가면 다음 줄로 이동 */
+}
+
+/* 테이블의 기본 스타일 */
+.word_row {
+    margin-left: 100px;
+    box-sizing: border-box; /* 테이블의 크기를 정확하게 계산 */
+}
+
+/* 테이블의 스타일 */
+.word_table {
+    width: 500px; /* 테이블이 부모 요소의 전체 너비를 차지하도록 설정 */
+    border-collapse: collapse; /* 테이블의 테두리를 하나로 합치기 */
+    border: 1px solid #000000; /* 테두리 스타일 */
+}
+
+.word_table th, .word_table td {
+    border: 1px solid #000000; /* 셀의 테두리 스타일 */
+    padding: 8px; /* 셀 안의 여백 */
+    text-align: center; /* 텍스트 정렬 */
+}
+
+/* 테이블 헤더 스타일 */
+.word_table th {
+    height: 50px;
+    font-size: 30px;
+    background-color: #FFD873; /* 헤더의 배경색 */
+    font-weight: bold; /* 글자를 굵게 */
+}
+
+.margin{
+    height: 300px;
+}
+.retest{
+    margin:auto;
+    display: block;
+    font-size: 50px;
+    height: 80px;
+    background-color:#FFD873;
+    color: #FF3E3E;
+    border-radius: 20px;
+    border : none;
+}
+
+.retest:hover{
+    background-color: #000000;
+}
+
+.next{
+    justify-content: center;
+    height: 120px;
+    width: 800px;
+    margin: 15px;
+    font-size: 50px;
+    background-color: transparent;
+    border-width: 5px;
+    border-color: #7C5200;
+    color: #7C5200;
+}
+
+.next:hover{
+    background-color: #FF3E3E;
+}
+
+.selected{
+    background-color: #FFD873;
+}
+
+.randomcount{
+    width: 600px;
+    height: 200px;
+    margin: 30px;
+    font-size: 60px;
+    background-color: transparent;
+    border-width: 5px;
+    border-color: #7C5200;
+    color: #7C5200;
+}
+
+.randomcount:hover{
+    background-color: #FFD873;
+}
