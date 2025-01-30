@@ -5,15 +5,14 @@
 }
 
 .title2{
-    margin-left: 30%;
-    font-size: 80px;
+    font-size:  clamp(40px, 6vw, 80px);
+    margin-left: 20vw;
     color: #E0A100;
     display: inline;
 }
 
-.title3{
-    margin-left: 30%;
-    font-size: 40px;
+.title3, .current, .slash, .total{
+    font-size: clamp(30px, 3vw, 60px);
     color: #E0A100;
     display: inline;
 }
@@ -31,12 +30,12 @@
 }
 
 .option1{
-    width: 600px;
-    height: 200px;
-    margin: 100px;
-    font-size: 100px;
+    width: 50vw;
+    height: 15vh;
+    margin: 5vh;
+    font-size: 5vw;
     background-color: transparent;
-    border-width: 5px;
+    border-width: 3px;
     border-color: #7C5200;
     color: #7C5200;
 }
@@ -60,12 +59,12 @@
 }
 
 .day{
-    margin: 25px;
-    height: 80px;
-    font-size: 40px;
-    width: 150px;
+    margin: 1vh;
+    height: 10vh;
+    font-size: 1.5vw;
+    width: 8vw;
     background-color: transparent;
-    border-width: 5px;
+    border-width: 3px;
     border-color: #7C5200;
     color: #7C5200;
 }
@@ -79,38 +78,43 @@
 }
 
 .testDay, .test{
-    font-size: 50px;
+    font-size: 4vw;
     color: #E0A100;
     display: inline;
 }
 
 .explain_div{
     display: flex;
-    justify-content: center;
+    justify-content: center; 
     align-items: center;
+    
 }
 
 .explain_container{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; 
+    height: 30vh;
 }
 
 .expain_row{
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 10vh;
+    margin-top: 5vh;
 }
 
 .explain{
-    font-size: 100px;
+    font-size: 7vw;
     color: #E0A100;
 }
 .explain2{
-    font-size: 80px;
+    font-size: 5vw;
     color: #ff7b00;
 }
 .wrongcount{
-    font-size: 80px;
+    font-size: 5vw;
     color: #FF3E3E;
 }
 
@@ -128,31 +132,31 @@
     margin: 10px;
 }
 .ok{
-    width: 600px;
-    height: 200px;
+    width: 30vw;
+    height: 15vh;
     background-color: transparent;
-    font-size: 100px;
-    border-width: 5px;
+    font-size: 5vw;
+    border-width: 3px;
     border-color: #7C5200;
     color: #7C5200;
 }
 
 .ok2{
-    width: 1000px;
-    height: 200px;
+    width: 50vw;
+    height: 25vh;
     background-color: transparent;
-    font-size: 100px;
-    border-width: 5px;
+    font-size: 5vw;
+    border-width: 3px;
     border-color: #7C5200;
     color: #7C5200;
 }
 
 .ok3{
-    width: 1000px;
-    height: 200px;
+    width: 50vw;
+    height: 25vh;
     background-color: transparent;
-    font-size: 100px;
-    border-width: 5px;
+    font-size: 5vw;
+    border-width: 3px;
     border-color: #7C5200;
     color: #FF3E3E;
 }
@@ -173,11 +177,11 @@
 }
 
 .count{
+    height: 20vh;
     display: flex;
     justify-content: right;
     align-items: right  ;
     flex-direction: row;
-    margin-right: 50px;
 }
 .qword_container{
     display: flex;
@@ -186,11 +190,11 @@
 }
 
 .qWord{
-    width: 800px;
-    height: 300px;
+    width: 36vw;
+    height: 18vh;
     background-color: transparent;
-    font-size: 100px;
-    border-width: 5px;
+    font-size: 4vw;
+    border-width: 3px;
     border-color: #7C5200;
     color: #844700;
 }
@@ -207,12 +211,12 @@
     margin: 10px;
 }
 .answer1, .answer2, .answer3, .answer4{
-    margin: 50px;
-    height: 200px;
-    width: 800px;
+    margin: 3vh;
+    height: 18vh;
+    width: 36vw;
     background-color: transparent;
-    font-size: 70px;
-    border-width: 5px;
+    font-size: 4vw;
+    border-width: 3px;
     border-color: #7C5200;
     color: #844700;
 }
@@ -229,10 +233,6 @@
     background-color: #FFD873
 }
 
-.current, .total, .slash{
-    margin-left: 10px;
-    font-size: 40px;
-}
 
 .english-word, .korean-word{
     font-size: 30px;
@@ -277,7 +277,7 @@
 }
 
 .margin{
-    height: 300px;
+    height: 10vh;
 }
 .retest{
     margin:auto;
@@ -296,12 +296,12 @@
 
 .next{
     justify-content: center;
-    height: 120px;
-    width: 800px;
-    margin: 15px;
-    font-size: 50px;
+    height: 15vh;
+    width: 40vw;
+    margin: 1vh;
+    font-size: 5vw;
     background-color: transparent;
-    border-width: 5px;
+    border-width: 3px;
     border-color: #7C5200;
     color: #7C5200;
 }
@@ -315,12 +315,12 @@
 }
 
 .randomcount{
-    width: 600px;
-    height: 200px;
-    margin: 30px;
-    font-size: 60px;
+    width: 50vw;
+    height: 20vh;
+    margin: 1vh;
+    font-size: 5vw;
     background-color: transparent;
-    border-width: 5px;
+    border-width: 3px;
     border-color: #7C5200;
     color: #7C5200;
 }
