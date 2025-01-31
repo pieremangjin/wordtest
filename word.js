@@ -48,16 +48,21 @@ function showWord(dayList, dayList2) {
     document.querySelector('.qWord').innerText = selectWord1[0];
 
     let selectWord2, selectWord3, selectWord4;
-    do {
-        selectWord2 = dayList2[Math.floor(Math.random() * dayList2.length)];
+    let usedMeanings = new Set();
+
+    usedMeanings.add(selectWord1[1]);
+    function getUniqueWord() {
+        let word;
+        do {
+            word = dayList2[Math.floor(Math.random() * dayList2.length)];
+        } while (usedMeanings.has(word[1]));  // 같은 뜻이 나오지 않도록 검사
+        usedMeanings.add(word[1]); // 뜻을 추가하여 중복 방지
+        return word;
     }
-    while (selectWord2 === selectWord1)
-    do {
-        selectWord3 = dayList2[Math.floor(Math.random() * dayList2.length)];
-    } while (selectWord3 === selectWord1 || selectWord3 === selectWord2)
-    do {
-        selectWord4 = dayList2[Math.floor(Math.random() * dayList2.length)];
-    } while (selectWord4 === selectWord1 || selectWord4 === selectWord2 || selectWord4 === selectWord3)
+
+    selectWord2 = getUniqueWord();
+    selectWord3 = getUniqueWord();
+    selectWord4 = getUniqueWord();
 
     //answersheet
     correctAnswer = selectWord1[1];

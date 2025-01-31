@@ -67,14 +67,21 @@ buttons.forEach(button => {
 });
 
 
-let totaltestList = [];
-let totalansList = [];
 let mergedTestList = [];
 let mergedAnsList = [];
+let selectWord1;
+let correctAnswer;
+
+let isLoaded = false;
 
 function loadwordLists() {
+    if (isLoaded) return;  // 이미 로드된 경우 실행하지 않음
+    isLoaded = true;
     let selectedDays = localStorage.getItem('selectedDay');
     selectedDays = JSON.parse(selectedDays);
+
+    let totaltestList = [];
+    let totalansList = [];
 
     for (let i = 0; i < selectedDays.length; i++) {
         let dayList1 = wordLists[selectedDays[i]];
@@ -84,50 +91,48 @@ function loadwordLists() {
         totalansList.push(dayList2);
     };
 
-    // 배열을 병합
+    // 병합 (전역 변수에 저장)
     mergedTestList = totaltestList.flat();
     mergedAnsList = totalansList.flat();
-
-    return {
-        mergedTestList,
-        mergedAnsList,
-    };
 }
 
-//전역변수선언(qword, answerword1,2,3,4)
-let selectWord1
-let correctAnswer;
-
-function showWord(mergedTestList, mergedAnsList) {
+function showWord() {
     let repeatNum = localStorage.getItem('randomTestNum');
 
     if (currentTestCount >= repeatNum) {
         localStorage.setItem('wrongAnswerCount', wrongAnswerArr.length); // 오답 개수 저장
         localStorage.setItem('wrongAnswerList', JSON.stringify(wrongAnswerArr)); // 오답 리스트 저장
-
         location.href = "end2.html";
         return;
     }
-    const randomIndex = Math.floor(Math.random() * mergedTestList.length);
 
+    const randomIndex = Math.floor(Math.random() * mergedTestList.length);
     selectWord1 = mergedTestList[randomIndex];
     mergedTestList.splice(randomIndex, 1);
 
-    // question
+
+    // 문제 출제
     document.querySelector('.qWord').innerText = selectWord1[0];
 
     let selectWord2, selectWord3, selectWord4;
-    do {
-        selectWord2 = mergedAnsList[Math.floor(Math.random() * mergedAnsList.length)];
-    } while (selectWord2 === selectWord1);
-    do {
-        selectWord3 = mergedAnsList[Math.floor(Math.random() * mergedAnsList.length)];
-    } while (selectWord3 === selectWord1 || selectWord3 === selectWord2);
-    do {
-        selectWord4 = mergedAnsList[Math.floor(Math.random() * mergedAnsList.length)];
-    } while (selectWord4 === selectWord1 || selectWord4 === selectWord2 || selectWord4 === selectWord3);
+    let usedMeanings = new Set();
 
-    // answersheet
+    usedMeanings.add(selectWord1[1]);
+
+    function getUniqueWord() {
+        let word;
+        do {
+            word = mergedAnsList[Math.floor(Math.random() * mergedAnsList.length)];
+        } while (usedMeanings.has(word[1]));  // 같은 뜻이 나오지 않도록 검사
+        usedMeanings.add(word[1]); // 뜻을 추가하여 중복 방지
+        return word;
+    }
+
+    selectWord2 = getUniqueWord();
+    selectWord3 = getUniqueWord();
+    selectWord4 = getUniqueWord();
+
+    // 정답 및 오답 설정
     correctAnswer = selectWord1[1];
     let wrongAnswer1 = selectWord2[1];
     let wrongAnswer2 = selectWord3[1];
@@ -135,25 +140,24 @@ function showWord(mergedTestList, mergedAnsList) {
 
     let answerarr = [correctAnswer, wrongAnswer1, wrongAnswer2, wrongAnswer3];
 
+    // 배열 섞기
     answerarr.sort(() => Math.random() - 0.5);
 
+    // HTML 업데이트
     document.querySelector('.answer1').innerText = answerarr[0];
     document.querySelector('.answer2').innerText = answerarr[1];
     document.querySelector('.answer3').innerText = answerarr[2];
     document.querySelector('.answer4').innerText = answerarr[3];
 
+    // 진행도 표시
     document.querySelector('.current').innerText = currentTestCount + 1;
-
     document.querySelector('.total').innerText = repeatNum;
+    console.log(mergedTestList)
 }
 
-
 function main() {
-    const {
-        mergedTestList,
-        mergedAnsList,
-    } = loadwordLists();
-    showWord(mergedTestList, mergedAnsList);
+    loadwordLists(); 
+    showWord();
 }
 
 //오답 리스트
