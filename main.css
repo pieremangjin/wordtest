@@ -6,7 +6,6 @@
 
 .title2{
     font-size:  clamp(40px, 6vw, 80px);
-    margin-left: 20vw;
     color: #E0A100;
     display: inline;
 }
