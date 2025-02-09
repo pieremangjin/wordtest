@@ -1,6 +1,7 @@
+let selectdayList = []; // 전역 변수로 선언
+let selectDays = '';
+
 document.addEventListener('DOMContentLoaded', function () { // HTML 로딩 후 실행
-    let selectdayList = []; // 전역 변수로 선언
-    let selectDays = '';
 
     function getTestDays(event) {
         selectDays = event.target.innerText;
@@ -55,6 +56,10 @@ function getrandomNum(event) {
     let regex = testNum.replace(/[^0-9]/g, '');
     randomTestNum = parseInt(regex, 10); // 숫자로 변환하여 저장
 
+    if (selectdayList.length*10 < randomTestNum){
+        alert("랜덤으로 볼 단어의 갯수가 적습니다.");
+        return;
+    }
     // randomTestNum을 localStorage에 저장
     localStorage.setItem('randomTestNum', randomTestNum);
 
@@ -77,6 +82,7 @@ let isLoaded = false;
 function loadwordLists() {
     if (isLoaded) return;  // 이미 로드된 경우 실행하지 않음
     isLoaded = true;
+    
     let selectedDays = localStorage.getItem('selectedDay');
     selectedDays = JSON.parse(selectedDays);
 
