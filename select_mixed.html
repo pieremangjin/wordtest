@@ -1,35 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="main.css" />
-</head>
-
-<body>
-    <img src="back_arrow.png" class="back" onclick="location.href='toeic_mixed.html'">
+  </head>
+  <body>
+    <img
+      src="back_arrow.png"
+      class="back"
+      onclick="location.href='toeic_mixed.html'"
+    />
     <h1 class="testDay"></h1>
     <h1 class="test">&nbsp;Test</h1>
-    <div class="button-container">
+    <div class="random_container">
+      <div class="random_row">
         <button class="randomcount">랜덤 15개</button>
-    </div>
-    <div class="button-container">
         <button class="randomcount">랜덤 20개</button>
-    </div>
-    <div class="button-container">
-        <button class="randomcount">랜덤 25개</button>
-    </div>
-    <div class="button-container">
+      </div>
+      <div class="random_row">
         <button class="randomcount">랜덤 30개</button>
+        <button class="randomcount">랜덤 40개</button>
+      </div>
+      <div class="random_row">
+        <button class="randomcount">랜덤 50개</button>
+        <button class="randomcount">랜덤 60개</button>
+      </div>
+      <div class="random_row">
+        <button class="randomcount">랜덤 70개</button>
+        <button class="randomcount">랜덤 80개</button>
+      </div>
     </div>
     <script src="word2.js"></script>
     <script src="wordList.js"></script>
     <script src="wordList2.js"></script>
     <script>
-        showSelectDays();
+      showSelectDays();
     </script>
-</body>
-
+  </body>
 </html>
